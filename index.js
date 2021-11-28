@@ -30,6 +30,7 @@ app.use(router);
 
 
 //set view engine as ejs
+app.set('views', './views');
 app.set("view engine","ejs");
 
 // start server
