@@ -147,7 +147,7 @@ router.post("/register", (req,res) => {
 
         User.register(newUser, req.body.password, function(err, user) {
             if(err){
-                res.send("Error while creating user: ", err);
+                res.send("Error while creating user: " + err);
             }
             else {
                 passport.authenticate("local")
