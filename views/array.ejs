@@ -1,0 +1,11 @@
+<html lang="en">
+    <body>
+        <% if (response.length > 0) { %>
+            <% response.forEach(res => { %>
+                <p><%= JSON.stringify(res)%></p>
+            <% }) %>
+            <% } else { %>
+                <p>There are no records to display...</p>
+        <% } %>
+    </body>
+</html>
