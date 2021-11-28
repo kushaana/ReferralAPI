@@ -27,7 +27,7 @@ const getIncentive = (id) => {
 //=======================
 
 router.get("/", (req,res) =>{
-    res.render("home.ejs");
+    res.render("home");
 });
 
 router.get("/milestones", (req, res) => {

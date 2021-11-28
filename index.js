@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const router = require('./router/routes');
 const passport = require('passport');
 const bodyParser = require("body-parser");
+let path = require('path');
 
 // import env variables
 dotenv.config({path: './config.env'});
@@ -13,6 +14,11 @@ require('./db/dbconn');
 
 // initialize app
 const app = express();
+
+//set view engine as ejs
+app.set('views', path.join(__dirname, "views"));
+app.set("view engine","ejs");
+
 app.use(express.json());
 app.use(require("express-session")({
     secret:"Refer to doc",
@@ -27,11 +33,6 @@ app.use(bodyParser.urlencoded(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(router);
-
-
-//set view engine as ejs
-app.set('views', './views');
-app.set("view engine","ejs");
 
 // start server
 const port = process.env.PORT || 3000;
