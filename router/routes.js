@@ -116,7 +116,7 @@ router.post("/register", function (req,res,next) {
     if(req.body.refereeCode !== "") {
         User.findOne({ 'referralCode' : req.body.refereeCode }, (err, refreeUser) => {
             if (err) {
-                res.send("Error while validating referral code!");
+                res.render("error", { err });
             }
             else {
                 if(refreeUser === null) {
@@ -147,7 +147,7 @@ router.post("/register", (req,res) => {
 
         User.register(newUser, req.body.password, function(err, user) {
             if(err){
-                res.send("Error while creating user: " + err);
+                res.render("error", { err });
             }
             else {
                 passport.authenticate("local")
@@ -170,7 +170,8 @@ router.post("/register", (req,res) => {
         })
     }
     else {
-        res.send("Invalid referral code!");
+        const err = "Invalid referral code!";
+        res.render("error", { err });
     }
 });
 
